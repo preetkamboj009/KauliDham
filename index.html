@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kauli Dham Prasad Box</title>
+<meta name="description" content="Sacred Prasad Box from Maa Kali Kirpa Chonki, Kauli Dham. ₹999 with free delivery across India.">
+<meta property="og:title" content="Kauli Dham Prasad Box — ₹999">
+<meta property="og:description" content="Get Mata Rani's prasad delivered home. Free delivery across India.">
+<meta property="og:image" content="img/box2.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;800&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #c8102e;
+    --red-dark: #8f0b20;
+    --cream: #fdf6ec;
+    --gold: #e0a526;
+    --ink: #2b1a14;
+    --muted: #6b5348;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Mukta", system-ui, sans-serif; color: var(--ink); background: var(--cream); line-height: 1.6; }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+  h1, h2 { font-family: "Tiro Devanagari Hindi", serif; font-weight: 400; line-height: 1.25; }
+  h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); color: var(--red-dark); text-align: center; margin-bottom: 8px; }
+  .sub { text-align: center; color: var(--muted); margin-bottom: 32px; }
+  section { padding: 64px 0; }
+
+  .btn { display: inline-block; background: var(--red); color: #fff; text-decoration: none; font-weight: 800; font-size: 1.15rem; padding: 14px 32px; border-radius: 999px; box-shadow: 0 6px 18px rgb(200 16 46 / .35); transition: transform .15s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.ghost { background: transparent; color: var(--red); border: 2px solid var(--red); box-shadow: none; }
+
+  /* top strip + hero */
+  .strip { background: var(--red-dark); color: #fff; text-align: center; font-size: .95rem; padding: 6px 16px; }
+  header { background: var(--red); color: #fff; }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; padding-bottom: 12px; }
+  .logo { font-family: "Tiro Devanagari Hindi", serif; font-size: 1.5rem; text-decoration: none; }
+  header nav a { color: #fff; text-decoration: none; font-weight: 600; margin-left: 20px; }
+  .hero { background: linear-gradient(180deg, var(--red) 0%, var(--red-dark) 100%); color: #fff; padding: 48px 0 64px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+  .hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+  .hero p { font-size: 1.15rem; opacity: .92; margin: 16px 0 24px; }
+  .price { font-size: 2.4rem; font-weight: 800; color: var(--gold); }
+  .price small { font-size: 1rem; color: #fff; font-weight: 400; margin-left: 8px; }
+  .hero .btn { background: #fff; color: var(--red); margin-top: 16px; }
+  .hero img { border-radius: 16px; box-shadow: 0 20px 40px rgb(0 0 0 / .35); }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .badges span { background: rgb(255 255 255 / .15); padding: 4px 12px; border-radius: 999px; font-size: .95rem; }
+
+  /* box contents */
+  .items { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .item { background: #fff; border: 1px solid #f0dcc4; border-left: 4px solid var(--gold); border-radius: 10px; padding: 16px 18px; }
+  .item b { display: block; font-size: 1.1rem; color: var(--red-dark); }
+  .item i { display: block; font-style: normal; font-weight: 600; }
+  .item span { color: var(--muted); font-size: .95rem; }
+
+  /* gallery */
+  .gallery { background: #fff; }
+  .main-img { max-width: 520px; margin: 0 auto; border-radius: 14px; overflow: hidden; }
+  .thumbs { display: flex; justify-content: center; gap: 10px; margin-top: 14px; }
+  .thumbs button { border: 3px solid transparent; border-radius: 10px; overflow: hidden; width: 76px; cursor: pointer; background: none; padding: 0; }
+  .thumbs button.on { border-color: var(--red); }
+
+  /* videos */
+  .videos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
+  .videos iframe { width: 100%; aspect-ratio: 9 / 16; border: 0; border-radius: 14px; background: #000; }
+  .social { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
+  /* buy */
+  .buy { background: var(--red); color: #fff; text-align: center; }
+  .buy h2 { color: #fff; }
+  .buy .sub { color: rgb(255 255 255 / .85); }
+  .buy .btn { background: #fff; color: var(--red); font-size: 1.3rem; padding: 16px 44px; }
+  .buy .note { margin-top: 16px; opacity: .85; font-size: .95rem; }
+
+  /* footer */
+  footer { background: var(--ink); color: #e9dcd0; padding: 48px 0 96px; font-size: .95rem; }
+  footer .cols { display: grid; grid-template-columns: 1fr 1.4fr; gap: 32px; }
+  footer h3 { font-family: "Tiro Devanagari Hindi", serif; font-weight: 400; color: #fff; font-size: 1.3rem; margin-bottom: 8px; }
+  footer details { border-bottom: 1px solid #4a3a33; padding: 10px 0; }
+  footer summary { cursor: pointer; font-weight: 600; color: #fff; }
+  footer details p { margin-top: 8px; }
+  .copy { text-align: center; margin-top: 32px; opacity: .6; }
+
+  /* mobile sticky buy bar */
+  .sticky { display: none; position: fixed; left: 0; right: 0; bottom: 0; background: #fff; border-top: 1px solid #eee; padding: 10px 16px; justify-content: space-between; align-items: center; z-index: 10; box-shadow: 0 -4px 16px rgb(0 0 0 / .08); }
+  .sticky b { font-size: 1.3rem; color: var(--red); }
+  .sticky .btn { padding: 10px 24px; font-size: 1rem; }
+
+  @media (max-width: 760px) {
+    header nav { display: none; }
+    .hero .wrap { grid-template-columns: 1fr; text-align: center; }
+    .badges { justify-content: center; }
+    .items { grid-template-columns: 1fr 1fr; }
+    .item { padding: 12px 14px; }
+    .hero img { max-width: 360px; margin: 0 auto; }
+    .videos { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 70%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+    .videos iframe { scroll-snap-align: center; }
+    footer .cols { grid-template-columns: 1fr; }
+    .sticky { display: flex; }
+  }
+</style>
+</head>
+<body>
+
+<div class="strip">🚚 Free delivery across India</div>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#">Kauli Dham</a>
+    <nav>
+      <a href="#box">Prasad Box</a>
+      <a href="#videos">Videos</a>
+      <a href="#buy">Order</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Mata Rani's sacred prasad, delivered to your home</h1>
+      <p>From Maa Kali Kirpa Chonki, Kauli Dham — prasad, raksha sutra, chunri, dhoop and everything needed for ardas, all in one box.</p>
+      <div class="price">₹999 <small>Free delivery</small></div>
+      <a class="btn buy-link" href="#buy">Order Now</a>
+      <div class="badges">
+        <span>🙏 Straight from the Dham</span>
+        <span>🔥 Blessed in havan</span>
+        <span>📦 All India delivery</span>
+      </div>
+    </div>
+    <img src="img/box2.webp" alt="Kauli Dham Prasad Box" width="1086" height="1448">
+  </div>
+</section>
+
+<section id="box">
+  <div class="wrap">
+    <h2>What's inside the box?</h2>
+    <p class="sub">Every item is prepared with devotion at Kauli Dham</p>
+    <div class="items">
+      <div class="item"><b>मिश्री का प्रसाद</b><i>Mishri Prasad</i><span>Rock sugar offering to Mata Rani</span></div>
+      <div class="item"><b>पंचमेवा</b><i>Panchmewa</i><span>Five kinds of dry fruits</span></div>
+      <div class="item"><b>फुल्लियों का प्रसाद</b><i>Phulliyan Prasad</i><span>Traditional puffed prasad</span></div>
+      <div class="item"><b>4 रक्षा सूत्र</b><i>4 Raksha Sutra</i><span>Sacred threads for family protection</span></div>
+      <div class="item"><b>कौली धाम की सरसों</b><i>Kauli Dham Sarson</i><span>Mustard seeds given at the Dham</span></div>
+      <div class="item"><b>लक्ष्मी पोटली</b><i>Laxmi Potli</i><span>Energised with mantras in havan</span></div>
+      <div class="item"><b>हाथ से बनी धूप</b><i>Handmade Dhoop</i><span>Made by hand at Kauli Dham</span></div>
+      <div class="item"><b>माता की चुनरी</b><i>Mata Ki Chunri</i><span>To offer to Mata Rani</span></div>
+      <div class="item"><b>अरदास की पूरी सामग्री</b><i>Complete Ardas Samagri</i><span>Everything to offer ardas at home</span></div>
+      <div class="item"><b>विधि की पर्ची</b><i>Instruction Slip</i><span>How to use every item, step by step</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap">
+    <h2>The Prasad Box</h2>
+    <p class="sub">Maa Kali Kirpa Chonki · Kauli Dham</p>
+    <div class="main-img"><img id="main" src="img/box2.webp" alt="Prasad Box" width="1086" height="1448"></div>
+    <div class="thumbs">
+      <button class="on" data-src="img/box2.webp"><img src="img/box2.webp" alt="Photo 1"></button>
+      <button data-src="img/box1.webp"><img src="img/box1.webp" alt="Photo 2"></button>
+      <button data-src="img/box3.webp"><img src="img/box3.webp" alt="Photo 3"></button>
+      <button data-src="img/box4.webp"><img src="img/box4.webp" alt="Photo 4"></button>
+    </div>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="wrap">
+    <h2>From Kauli Dham</h2>
+    <p class="sub">Darshan of the Dham and a look at the prasad</p>
+    <div class="videos">
+      <iframe src="https://www.youtube-nocookie.com/embed/OaVUkSPrqJg" title="Kauli Dham video 1" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe src="https://www.youtube-nocookie.com/embed/heCfPP95tCI" title="Kauli Dham video 2" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe src="https://www.youtube-nocookie.com/embed/17zJ1p6mCyE" title="Kauli Dham video 3" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="social">
+      <a class="btn ghost" href="https://www.instagram.com/kauli_dham" target="_blank" rel="noopener">Follow on Instagram</a>
+    </div>
+  </div>
+</section>
+
+<section class="buy" id="buy">
+  <div class="wrap">
+    <h2>Order Your Prasad Box</h2>
+    <p class="sub">₹999 · Free delivery across India</p>
+    <a class="btn buy-link" href="#" target="_blank" rel="noopener">Order Now</a>
+    <p class="note">Questions? Call or WhatsApp: <a href="tel:+918360335885">83603 35885</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>Kauli Dham</h3>
+        <p>Maa Kali Kirpa Chonki</p>
+        <p><a href="https://maps.google.com/?q=Kauli+Dham+Rao+Majra+Road+Rajpura+Punjab+140701" target="_blank" rel="noopener">Bir Kauli, Rao Majra Road, Near Gedi Route Mall, Rajpura–Patiala Road, Punjab 140701</a></p>
+        <p>Phone / WhatsApp: <a href="tel:+918360335885">+91 83603 35885</a></p>
+        <p>GSTIN: 03ODMPS4336C1ZC</p>
+        <p><a href="https://www.instagram.com/kauli_dham" target="_blank" rel="noopener">Instagram: @kauli_dham</a></p>
+      </div>
+      <div>
+        <details id="shipping">
+          <summary>Shipping Policy</summary>
+          <p>We offer free delivery across India. Orders are dispatched within 2–3 days and usually arrive within 5–7 working days. Tracking details are sent to your phone once the order ships.</p>
+        </details>
+        <details id="refund">
+          <summary>Refund &amp; Cancellation</summary>
+          <p>Prasad is sacred and consumable, so shipped orders cannot be returned. Orders cancelled before dispatch get a full refund within 5–7 working days. If your box arrives damaged, WhatsApp us an unboxing video within 48 hours of delivery and we will send a new box.</p>
+        </details>
+        <details id="terms">
+          <summary>Terms &amp; Conditions</summary>
+          <p>By ordering from this website you agree to these terms. The price is ₹999 including all taxes. Box contents may vary slightly depending on availability. For any dispute, contact us on the number above.</p>
+        </details>
+        <details id="privacy">
+          <summary>Privacy Policy</summary>
+          <p>Your name, phone number and address are used only to deliver your order. We never sell or share your details. Payments go through a secure payment gateway — your card or bank details never reach us.</p>
+        </details>
+        <details id="contact">
+          <summary>Contact Us</summary>
+          <p>Kauli Dham, Bir Kauli, Rao Majra Road, Near Gedi Route Mall, Rajpura–Patiala Road, Punjab 140701</p>
+          <p>Phone / WhatsApp: +91 83603 35885</p>
+          <p>GSTIN: 03ODMPS4336C1ZC</p>
+        </details>
+      </div>
+    </div>
+    <p class="copy">© 2026 Kauli Dham · kaulidham.in</p>
+  </div>
+</footer>
+
+<div class="sticky">
+  <div><b>₹999</b> <small>Free delivery</small></div>
+  <a class="btn buy-link" href="#" target="_blank" rel="noopener">Order Now</a>
+</div>
+
+<script>
+  // ponytail: no gateway yet, orders go to WhatsApp. Paste the PayU payment link here once approved.
+  const PAY_LINK = '';
+  const WA_LINK = 'https://wa.me/918360335885?text=' + encodeURIComponent('Jai Mata Di 🙏 I want to order the Kauli Dham Prasad Box (₹999).');
+  document.querySelectorAll('.buy-link').forEach(a => {
+    if (a.getAttribute('href') === '#buy') return;
+    a.href = PAY_LINK || WA_LINK;
+  });
+
+  document.querySelectorAll('.thumbs button').forEach(b => b.onclick = () => {
+    document.getElementById('main').src = b.dataset.src;
+    document.querySelector('.thumbs .on').classList.remove('on');
+    b.classList.add('on');
+  });
+</script>
+</body>
+</html>
