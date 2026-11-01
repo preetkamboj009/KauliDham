@@ -127,7 +127,7 @@
       <h1>Mata Rani's sacred prasad, delivered to your home</h1>
       <p>From Maa Kali Kirpa Chonki, Kauli Dham — prasad, raksha sutra, chunri, dhoop and everything needed for ardas, all in one box.</p>
       <div class="price">₹999 <small>Free delivery</small></div>
-      <a class="btn buy-link" href="#buy">Order Now</a>
+      <a class="btn buy-link" href="checkout.html">Order Now</a>
       <div class="badges">
         <span>🙏 Straight from the Dham</span>
         <span>🔥 Blessed in havan</span>
@@ -190,7 +190,7 @@
   <div class="wrap">
     <h2>Order Your Prasad Box</h2>
     <p class="sub">₹999 · Free delivery across India</p>
-    <a class="btn buy-link" href="#" target="_blank" rel="noopener">Order Now</a>
+    <a class="btn buy-link" href="checkout.html">Order Now</a>
     <p class="note">Questions? Call or WhatsApp: <a href="tel:+918360335885">83603 35885</a></p>
   </div>
 </section>
@@ -245,17 +245,17 @@
 
 <div class="sticky">
   <div><b>₹999</b> <small>Free delivery</small></div>
-  <a class="btn buy-link" href="#" target="_blank" rel="noopener">Order Now</a>
+  <a class="btn buy-link" href="checkout.html">Order Now</a>
 </div>
 
 <script>
-  // ponytail: no gateway yet, orders go to WhatsApp. Paste the PayU payment link here once approved.
-  const PAY_LINK = '';
-  const WA_LINK = 'https://wa.me/918360335885?text=' + encodeURIComponent('Jai Mata Di 🙏 I want to order the Kauli Dham Prasad Box (₹999).');
-  document.querySelectorAll('.buy-link').forEach(a => {
-    if (a.getAttribute('href') === '#buy') return;
-    a.href = PAY_LINK || WA_LINK;
-  });
+  // Policy links like kaulidham.in/#refund open that policy, so each one has its own URL for gateway forms.
+  const openPolicy = () => {
+    const d = location.hash && document.querySelector('details' + location.hash);
+    if (d) { d.open = true; d.scrollIntoView(); }
+  };
+  openPolicy();
+  addEventListener('hashchange', openPolicy);
 
   document.querySelectorAll('.thumbs button').forEach(b => b.onclick = () => {
     document.getElementById('main').src = b.dataset.src;

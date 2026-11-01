@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout — Kauli Dham Prasad Box</title>
+<meta name="description" content="Order the Kauli Dham Prasad Box. ₹999 with free delivery across India.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;800&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #c8102e;
+    --red-dark: #8f0b20;
+    --cream: #fdf6ec;
+    --gold: #e0a526;
+    --ink: #2b1a14;
+    --muted: #6b5348;
+    --line: #ead7c0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Mukta", system-ui, sans-serif; color: var(--ink); background: var(--cream); line-height: 1.6; }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
+
+  header { background: var(--red); color: #fff; }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; padding-bottom: 12px; }
+  .logo { font-family: "Tiro Devanagari Hindi", serif; font-size: 1.5rem; text-decoration: none; }
+  header a.back { color: #fff; text-decoration: none; font-weight: 600; }
+
+  h1 { font-family: "Tiro Devanagari Hindi", serif; font-weight: 400; color: var(--red-dark); font-size: clamp(1.8rem, 4vw, 2.3rem); margin: 32px 0 20px; }
+  .grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: start; padding-bottom: 48px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
+  .card h2 { font-size: 1.2rem; margin-bottom: 16px; }
+
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  label { display: block; font-weight: 600; font-size: .95rem; margin-bottom: 14px; }
+  label span { color: var(--muted); font-weight: 400; }
+  input, select, textarea { display: block; width: 100%; margin-top: 4px; font: inherit; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--gold); border-color: var(--gold); }
+  textarea { resize: vertical; min-height: 70px; }
+  .agree { display: flex; gap: 10px; font-weight: 400; align-items: flex-start; }
+  .agree input { width: auto; margin-top: 6px; }
+
+  .summary { position: sticky; top: 16px; }
+  .product { display: flex; gap: 14px; align-items: center; margin-bottom: 16px; }
+  .product img { width: 84px; border-radius: 10px; }
+  .qty { display: flex; align-items: center; gap: 10px; margin: 4px 0 16px; }
+  .qty button { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: #fff; font-size: 1.2rem; cursor: pointer; }
+  .qty output { min-width: 24px; text-align: center; font-weight: 800; font-size: 1.1rem; }
+  .line { display: flex; justify-content: space-between; padding: 6px 0; }
+  .line.total { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 12px; font-weight: 800; font-size: 1.25rem; }
+  .free { color: #1a7f37; font-weight: 600; }
+
+  .pay { display: block; width: 100%; margin-top: 18px; background: var(--red); color: #fff; border: 0; font: inherit; font-weight: 800; font-size: 1.15rem; padding: 14px; border-radius: 999px; cursor: pointer; box-shadow: 0 6px 18px rgb(200 16 46 / .3); }
+  .pay:disabled { opacity: .6; cursor: wait; }
+  .secure { text-align: center; color: var(--muted); font-size: .9rem; margin-top: 10px; }
+  .notice { display: none; margin-top: 16px; background: #fff8e6; border: 1px solid var(--gold); border-radius: 10px; padding: 14px; font-size: .95rem; }
+
+  footer { background: var(--ink); color: #e9dcd0; padding: 24px 0; font-size: .9rem; text-align: center; }
+  footer a { margin: 0 8px; }
+
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+    .summary { position: static; order: -1; }
+    .row { grid-template-columns: 1fr; gap: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="index.html">Kauli Dham</a>
+    <a class="back" href="index.html">← Back</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Checkout</h1>
+  <form id="order" class="grid" novalidate>
+    <div class="card">
+      <h2>Delivery details</h2>
+      <label>Full name
+        <input name="name" required autocomplete="name" maxlength="80">
+      </label>
+      <div class="row">
+        <label>Mobile number
+          <input name="phone" type="tel" required autocomplete="tel-national" inputmode="numeric" pattern="[6-9][0-9]{9}" maxlength="10" placeholder="10-digit mobile">
+        </label>
+        <label>Email <span>(for order updates)</span>
+          <input name="email" type="email" autocomplete="email" maxlength="100">
+        </label>
+      </div>
+      <label>Address <span>(house no., street, area)</span>
+        <textarea name="address" required autocomplete="street-address" maxlength="250"></textarea>
+      </label>
+      <label>Landmark <span>(optional)</span>
+        <input name="landmark" maxlength="100">
+      </label>
+      <div class="row">
+        <label>City
+          <input name="city" required autocomplete="address-level2" maxlength="60">
+        </label>
+        <label>Pincode
+          <input name="pincode" required autocomplete="postal-code" inputmode="numeric" pattern="[1-9][0-9]{5}" maxlength="6">
+        </label>
+      </div>
+      <label>State
+        <select name="state" required autocomplete="address-level1">
+          <option value="">Select state</option>
+          <option>Andaman and Nicobar Islands</option><option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option><option>Bihar</option><option>Chandigarh</option><option>Chhattisgarh</option><option>Dadra and Nagar Haveli and Daman and Diu</option><option>Delhi</option><option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jammu and Kashmir</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Ladakh</option><option>Lakshadweep</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option><option>Odisha</option><option>Puducherry</option><option>Punjab</option><option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option>
+        </select>
+      </label>
+      <label class="agree">
+        <input type="checkbox" name="agree" required>
+        <span>I agree to the <a href="index.html#terms">Terms</a>, <a href="index.html#refund">Refund Policy</a> and <a href="index.html#shipping">Shipping Policy</a>.</span>
+      </label>
+    </div>
+
+    <aside class="card summary">
+      <h2>Order summary</h2>
+      <div class="product">
+        <img src="img/box2.webp" alt="Kauli Dham Prasad Box" width="1086" height="1448">
+        <div>
+          <b>Kauli Dham Prasad Box</b><br>
+          <span class="free">Free delivery</span>
+        </div>
+      </div>
+      Quantity
+      <div class="qty">
+        <button type="button" data-step="-1" aria-label="Decrease quantity">−</button>
+        <output id="qty">1</output>
+        <button type="button" data-step="1" aria-label="Increase quantity">+</button>
+      </div>
+      <div class="line"><span>Price</span><span id="subtotal">₹999</span></div>
+      <div class="line"><span>Delivery</span><span class="free">FREE</span></div>
+      <div class="line total"><span>Total</span><span id="total">₹999</span></div>
+      <button class="pay" type="submit" id="payBtn">Pay ₹999</button>
+      <p class="secure">🔒 Secure payment via UPI, cards &amp; net banking</p>
+      <div class="notice" id="notice"></div>
+    </aside>
+  </form>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html#shipping">Shipping</a>
+    <a href="index.html#refund">Refund</a>
+    <a href="index.html#terms">Terms</a>
+    <a href="index.html#privacy">Privacy</a>
+    <a href="index.html#contact">Contact</a>
+    <p>© 2026 Kauli Dham · kaulidham.in</p>
+  </div>
+</footer>
+
+<script>
+  const PRICE = 999, MAX_QTY = 10;
+  // ponytail: gateway not live yet. Once PhonePe is approved, set this to the payment server endpoint
+  // (it creates the PhonePe order with the secret key and returns { redirectUrl }).
+  const PAY_API = '';
+
+  const form = document.getElementById('order');
+  const qtyOut = document.getElementById('qty');
+  const notice = document.getElementById('notice');
+  const payBtn = document.getElementById('payBtn');
+  const rupees = n => '₹' + n.toLocaleString('en-IN');
+  let qty = 1;
+
+  function render() {
+    qtyOut.textContent = qty;
+    document.getElementById('subtotal').textContent = rupees(PRICE * qty);
+    document.getElementById('total').textContent = rupees(PRICE * qty);
+    payBtn.textContent = 'Pay ' + rupees(PRICE * qty);
+  }
+  document.querySelectorAll('.qty button').forEach(b => b.onclick = () => {
+    qty = Math.min(MAX_QTY, Math.max(1, qty + Number(b.dataset.step)));
+    render();
+  });
+
+  function show(msg) {
+    notice.innerHTML = msg;
+    notice.style.display = 'block';
+  }
+
+  form.onsubmit = async e => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    const order = Object.fromEntries(new FormData(form));
+    order.quantity = qty;
+
+    if (!PAY_API) {
+      show('Online payment is being activated and will be live very soon. To order right now, please call <a href="tel:+918360335885">+91 83603 35885</a> or email <a href="mailto:orders@kaulidham.in">orders@kaulidham.in</a>.');
+      return;
+    }
+
+    payBtn.disabled = true;
+    try {
+      const res = await fetch(PAY_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(order) });
+      const data = await res.json();
+      if (!res.ok || !data.redirectUrl) throw new Error(data.error || 'Payment could not be started');
+      location.href = data.redirectUrl;
+    } catch (err) {
+      show('Sorry, payment could not be started. Please try again, or call <a href="tel:+918360335885">+91 83603 35885</a>.');
+      payBtn.disabled = false;
+    }
+  };
+</script>
+</body>
+</html>
