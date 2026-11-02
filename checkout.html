@@ -9,6 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;800&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <style>
   :root {
     --red: #c8102e;
@@ -27,7 +29,8 @@
 
   header { background: var(--red); color: #fff; }
   header .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; padding-bottom: 12px; }
-  .logo { font-family: "Tiro Devanagari Hindi", serif; font-size: 1.5rem; text-decoration: none; }
+  .logo { font-family: "Tiro Devanagari Hindi", serif; font-size: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .logo img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid #fff; }
   header a.back { color: #fff; text-decoration: none; font-weight: 600; }
 
   h1 { font-family: "Tiro Devanagari Hindi", serif; font-weight: 400; color: var(--red-dark); font-size: clamp(1.8rem, 4vw, 2.3rem); margin: 32px 0 20px; }
@@ -73,7 +76,7 @@
 
 <header>
   <div class="wrap">
-    <a class="logo" href="index.html">Kauli Dham</a>
+    <a class="logo" href="index.html"><img src="img/logo.webp" alt="" width="44" height="44">Kauli Dham</a>
     <a class="back" href="index.html">← Back</a>
   </div>
 </header>

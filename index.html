@@ -11,6 +11,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;800&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <style>
   :root {
     --red: #c8102e;
@@ -39,7 +41,8 @@
   .strip { background: var(--red-dark); color: #fff; text-align: center; font-size: .95rem; padding: 6px 16px; }
   header { background: var(--red); color: #fff; }
   header .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; padding-bottom: 12px; }
-  .logo { font-family: "Tiro Devanagari Hindi", serif; font-size: 1.5rem; text-decoration: none; }
+  .logo { font-family: "Tiro Devanagari Hindi", serif; font-size: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .logo img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid #fff; }
   header nav a { color: #fff; text-decoration: none; font-weight: 600; margin-left: 20px; }
   .hero { background: linear-gradient(180deg, var(--red) 0%, var(--red-dark) 100%); color: #fff; padding: 48px 0 64px; }
   .hero .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
@@ -112,7 +115,7 @@
 
 <header>
   <div class="wrap">
-    <a class="logo" href="#">Kauli Dham</a>
+    <a class="logo" href="#"><img src="img/logo.webp" alt="" width="44" height="44">Kauli Dham</a>
     <nav>
       <a href="#box">Prasad Box</a>
       <a href="#videos">Videos</a>
