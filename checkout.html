@@ -3,23 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Checkout — Kauli Dham Prasad Box</title>
+<title>Checkout · Kauli Dham Prasad Box</title>
 <meta name="description" content="Order the Kauli Dham Prasad Box. ₹999 with free delivery across India.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;800&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Mukta:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <style>
   :root {
-    --red: #c8102e;
-    --red-dark: #8f0b20;
-    --cream: #fdf6ec;
-    --gold: #e0a526;
-    --ink: #2b1a14;
-    --muted: #6b5348;
-    --line: #ead7c0;
+    --red: #c4122f;
+    --red-dark: #9e0e25;
+    --cream: #faf4f0;
+    --gold: #c4122f;
+    --ink: #1f1512;
+    --muted: #6f5a50;
+    --line: #e7dacb;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: "Mukta", system-ui, sans-serif; color: var(--ink); background: var(--cream); line-height: 1.6; }
@@ -27,13 +27,14 @@
   a { color: inherit; }
   .wrap { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
 
-  header { background: #5c0712; color: #fff; }
+  header { background: var(--cream); border-bottom: 1px solid var(--line); }
   header .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; padding-bottom: 12px; }
-  .logo { font-family: "Tiro Devanagari Hindi", serif; font-size: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 10px; }
-  .logo img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid #f7d77e; }
-  header a.back { color: #fff; text-decoration: none; font-weight: 600; }
+  .logo { font-family: "Outfit", sans-serif; font-weight: 600; font-size: 1.2rem; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .logo img { width: 40px; height: 40px; border-radius: 50%; }
+  header a.back { color: var(--muted); text-decoration: none; font-weight: 500; }
 
-  h1 { font-family: "Tiro Devanagari Hindi", serif; font-weight: 400; color: var(--red-dark); font-size: clamp(1.8rem, 4vw, 2.3rem); margin: 32px 0 20px; }
+  h1, .card h2 { font-family: "Outfit", sans-serif; font-weight: 600; letter-spacing: -0.02em; }
+  h1 { color: var(--ink); font-size: clamp(1.8rem, 4vw, 2.3rem); margin: 32px 0 20px; }
   .grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: start; padding-bottom: 48px; }
   .card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
   .card h2 { font-size: 1.2rem; margin-bottom: 16px; }
@@ -57,10 +58,10 @@
   .line.total { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 12px; font-weight: 800; font-size: 1.25rem; }
   .free { color: #1a7f37; font-weight: 600; }
 
-  .pay { display: block; width: 100%; margin-top: 18px; background: var(--red); color: #fff; border: 0; font: inherit; font-weight: 800; font-size: 1.15rem; padding: 14px; border-radius: 999px; cursor: pointer; box-shadow: 0 6px 18px rgb(200 16 46 / .3); }
+  .pay { display: block; width: 100%; margin-top: 18px; background: var(--red); color: #fff; border: 0; font: inherit; font-family: "Outfit", sans-serif; font-weight: 600; font-size: 1.15rem; padding: 14px; border-radius: 999px; cursor: pointer; box-shadow: 0 6px 18px rgb(200 16 46 / .3); }
   .pay:disabled { opacity: .6; cursor: wait; }
   .secure { text-align: center; color: var(--muted); font-size: .9rem; margin-top: 10px; }
-  .notice { display: none; margin-top: 16px; background: #fff8e6; border: 1px solid var(--gold); border-radius: 10px; padding: 14px; font-size: .95rem; }
+  .notice { display: none; margin-top: 16px; background: #fff5f5; border: 1px solid var(--gold); border-radius: 10px; padding: 14px; font-size: .95rem; }
 
   footer { background: var(--ink); color: #e9dcd0; padding: 24px 0; font-size: .9rem; text-align: center; }
   footer a { margin: 0 8px; }
@@ -76,7 +77,7 @@
 
 <header>
   <div class="wrap">
-    <a class="logo" href="index.html"><img src="img/logo.webp" alt="" width="44" height="44">Kauli Dham</a>
+    <a class="logo" href="index.html"><img src="img/logo.webp" alt="" width="40" height="40">Kauli Dham</a>
     <a class="back" href="index.html">← Back</a>
   </div>
 </header>
@@ -126,7 +127,7 @@
     <aside class="card summary">
       <h2>Order summary</h2>
       <div class="product">
-        <img src="img/prasad-1.webp" alt="Kauli Dham Prasad Box" width="1200" height="1200">
+        <img src="img/box-front.webp" alt="Kauli Dham Prasad Box" width="1200" height="1200">
         <div>
           <b>Kauli Dham Prasad Box</b><br>
           <span class="free">Free delivery</span>
