@@ -156,8 +156,8 @@
         <label class="opt"><input type="radio" name="mode" value="cod">
           <span><b>Cash on delivery</b><br><small>Pay ₹100 now to book. Pay the rest in cash when the box arrives.</small></span></label>
       </fieldset>
-      <div class="line"><span>MRP</span><s id="mrp">₹1,899</s></div>
-      <div class="line"><span>Discount (47% off)</span><span class="free" id="discount">−₹900</span></div>
+      <div class="line"><span>MRP</span><s id="mrp">₹1,799</s></div>
+      <div class="line"><span>Discount (44% off)</span><span class="free" id="discount">−₹800</span></div>
       <div class="line"><span>Delivery</span><span class="free">FREE</span></div>
       <div class="line cod-only"><span>COD charge</span><span>₹100</span></div>
       <div class="line total"><span>Total</span><span id="total">₹999</span></div>
@@ -183,7 +183,7 @@
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
-  const PRICE = 999, MRP = 1899, COD_FEE = 100, MAX_QTY = 10;
+  const PRICE = 999, MRP = 1799, COD_FEE = 100, MAX_QTY = 10;
   // Razorpay backend (_pay/ folder, hosted on Hostinger). Empty = payments off, show the call/email notice.
   const PAY_API = 'https://pay.kaulidham.in';
 
