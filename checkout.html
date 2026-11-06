@@ -212,7 +212,7 @@
         name: 'Kauli Dham',
         description: 'Kauli Dham Prasad Box × ' + qty,
         image: 'https://kaulidham.in/img/logo.webp',
-        prefill: { name: order.name, contact: order.phone, email: order.email },
+        prefill: { name: order.name, contact: '+91' + order.phone, email: order.email },
         theme: { color: '#c4122f' },
         modal: { ondismiss: () => { payBtn.disabled = false; } },
         handler: paid,
