@@ -54,6 +54,7 @@
   .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
   .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 600; font-size: 1.2rem; letter-spacing: -0.01em; }
   .brand img { width: 40px; height: 40px; border-radius: 50%; }
+  .nav .brand img { width: 46px; height: 46px; border-radius: 0; }
   .nav .links { display: flex; align-items: center; gap: 28px; }
   .nav .links a:not(.btn) { text-decoration: none; color: var(--ink-soft); font-weight: 500; }
   .nav .links a:not(.btn):hover { color: var(--ink); }
@@ -98,7 +99,7 @@
 
   /* close */
   .close { background: var(--red); color: #fff; text-align: center; }
-  .close img { width: 84px; height: 84px; margin: 0 auto 22px; border-radius: 50%; border: 3px solid rgb(255 255 255 / .9); }
+  .close img { width: clamp(120px, 14vw, 150px); height: auto; margin: 0 auto 24px; border-radius: 50%; border: 3px solid rgb(255 255 255 / .9); }
   .close h2 { font-size: clamp(2.3rem, 5vw, 3.8rem); }
   .close p { opacity: .85; font-size: 1.15rem; margin: 14px auto 32px; }
   .close .btn { background: #fff; color: var(--red); box-shadow: 0 10px 24px -10px rgb(0 0 0 / .4); }
@@ -160,7 +161,7 @@
 
 <nav class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="#"><img src="img/logo.webp" alt="" width="40" height="40">Kauli Dham</a>
+    <a class="brand" href="#"><img src="img/mark.webp" alt="" width="46" height="46">Kauli Dham</a>
     <div class="links">
       <a href="#inside">What's inside</a>
       <a href="#contact">Contact</a>
@@ -221,7 +222,7 @@
 
 <section class="close">
   <div class="wrap">
-    <img src="img/logo.webp" alt="Kauli Dham logo" width="84" height="84" loading="lazy">
+    <img src="img/logo.webp" alt="Kauli Dham logo" width="150" height="150" loading="lazy">
     <h2>Jai Mata Di</h2>
     <p>Bring the blessings of Kauli Dham home. ₹999, free delivery.</p>
     <a class="btn" href="checkout.html">Order Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
