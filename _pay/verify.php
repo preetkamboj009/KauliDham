@@ -12,18 +12,22 @@ if (!hash_equals(hash_hmac('sha256', "$oid|$pid", RZP_KEY_SECRET), $sig)) fail('
 $order = rzp('GET', '/v1/orders/' . $oid);
 $n = $order['notes'] ?? [];
 $total = number_format($order['amount'] / 100, 0, '.', ',');
+$cash = (int)($n['cash_on_delivery'] ?? 0);
+$cod = ($n['mode'] ?? '') === 'COD';
 
-$body = "New paid order\n\n"
-      . "Payment ID: $pid\nOrder ID: $oid\nAmount: Rs $total\nQuantity: {$n['quantity']}\n\n"
+$body = ($cod ? "New COD order\n\nCASH ON DELIVERY: collect Rs $cash in cash\n\n" : "New paid order (prepaid)\n\n")
+      . "Payment ID: $pid\nOrder ID: $oid\nPaid online: Rs $total\nQuantity: {$n['quantity']}\n\n"
       . "Name: {$n['name']}\nMobile: {$n['phone']}\nEmail: {$n['email']}\n\n"
       . "Address: {$n['address']}\nLandmark: {$n['landmark']}\n"
       . "{$n['city']}, {$n['state']} {$n['pincode']}\n";
 $headers = "From: Kauli Dham <" . ORDERS_EMAIL . ">\r\nContent-Type: text/plain; charset=UTF-8";
-mail(ORDERS_EMAIL, "New order $oid - Rs $total", $body, $headers);
+mail(ORDERS_EMAIL, ($cod ? "New COD order" : "New paid order") . " $oid", $body, $headers);
 
 if (filter_var($n['email'] ?? '', FILTER_VALIDATE_EMAIL)) {
     $msg = "Jai Mata Di {$n['name']},\n\n"
-         . "Thank you. We received your payment of Rs $total for {$n['quantity']} Kauli Dham Prasad Box.\n"
+         . ($cod
+             ? "Thank you. We received your booking amount of Rs $total for {$n['quantity']} Kauli Dham Prasad Box. Please keep Rs $cash in cash ready when the box arrives.\n"
+             : "Thank you. We received your payment of Rs $total for {$n['quantity']} Kauli Dham Prasad Box.\n")
          . "Payment ID: $pid\n\n"
          . "Your box will be dispatched within 2-3 days. For help, reply to this email or call +91 83603 35885.\n\n"
          . "Maa Kaali Vastu Kendra\nkaulidham.in\n";

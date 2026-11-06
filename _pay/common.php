@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') exit;
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') fail('POST only', 405);
 
 const PRICE_PAISE = 99900;
+const COD_FEE_PAISE = 10000;   // COD: only this booking amount is paid online
 const ORDERS_EMAIL = 'orders@kaulidham.in';
 
 function out($data) { echo json_encode($data); exit; }

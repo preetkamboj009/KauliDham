@@ -57,6 +57,16 @@
   .line { display: flex; justify-content: space-between; padding: 6px 0; }
   .line.total { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 12px; font-weight: 800; font-size: 1.25rem; }
   .free { color: #1a7f37; font-weight: 600; }
+  .line s { color: var(--muted); }
+  .method { border: 0; margin: 4px 0 12px; }
+  .method legend { font-weight: 600; margin-bottom: 8px; }
+  label.opt { display: flex; gap: 10px; align-items: flex-start; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; font-weight: 400; cursor: pointer; }
+  .opt:has(input:checked) { border-color: var(--red); background: #fff8f8; }
+  .opt input { width: auto; margin-top: 6px; accent-color: var(--red); }
+  .opt small { color: var(--muted); }
+  .save { font-style: normal; font-size: .8rem; font-weight: 600; color: #fff; background: #1a7f37; padding: 2px 8px; border-radius: 999px; margin-left: 8px; }
+  .cod-only { display: none; }
+  .is-cod .cod-only { display: flex; }
 
   .pay { display: block; width: 100%; margin-top: 18px; background: var(--red); color: #fff; border: 0; font: inherit; font-family: "Outfit", sans-serif; font-weight: 600; font-size: 1.15rem; padding: 14px; border-radius: 999px; cursor: pointer; box-shadow: 0 6px 18px rgb(200 16 46 / .3); }
   .pay:disabled { opacity: .6; cursor: wait; }
@@ -139,9 +149,20 @@
         <output id="qty">1</output>
         <button type="button" data-step="1" aria-label="Increase quantity">+</button>
       </div>
-      <div class="line"><span>Price</span><span id="subtotal">₹999</span></div>
+      <fieldset class="method">
+        <legend>Payment method</legend>
+        <label class="opt"><input type="radio" name="mode" value="prepaid" checked>
+          <span><b>Pay online</b><em class="save">Save ₹100</em><br><small>UPI, cards or net banking. Free delivery.</small></span></label>
+        <label class="opt"><input type="radio" name="mode" value="cod">
+          <span><b>Cash on delivery</b><br><small>Pay ₹100 now to book. Pay the rest in cash when the box arrives.</small></span></label>
+      </fieldset>
+      <div class="line"><span>MRP</span><s id="mrp">₹1,899</s></div>
+      <div class="line"><span>Discount (47% off)</span><span class="free" id="discount">−₹900</span></div>
       <div class="line"><span>Delivery</span><span class="free">FREE</span></div>
+      <div class="line cod-only"><span>COD charge</span><span>₹100</span></div>
       <div class="line total"><span>Total</span><span id="total">₹999</span></div>
+      <div class="line cod-only"><span>Pay now</span><b>₹100</b></div>
+      <div class="line cod-only"><span>Pay in cash on delivery</span><span id="cash">₹999</span></div>
       <button class="pay" type="submit" id="payBtn">Pay ₹999</button>
       <p class="secure">🔒 Secure payment via UPI, cards &amp; net banking</p>
       <div class="notice" id="notice"></div>
@@ -162,7 +183,7 @@
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
-  const PRICE = 999, MAX_QTY = 10;
+  const PRICE = 999, MRP = 1899, COD_FEE = 100, MAX_QTY = 10;
   // Razorpay backend (_pay/ folder, hosted on Hostinger). Empty = payments off, show the call/email notice.
   const PAY_API = 'https://pay.kaulidham.in';
 
@@ -173,16 +194,24 @@
   const rupees = n => '₹' + n.toLocaleString('en-IN');
   let qty = 1;
 
+  const isCod = () => form.elements.mode.value === 'cod';
+  const $ = id => document.getElementById(id);
+
   function render() {
+    const cod = isCod(), goods = PRICE * qty;
     qtyOut.textContent = qty;
-    document.getElementById('subtotal').textContent = rupees(PRICE * qty);
-    document.getElementById('total').textContent = rupees(PRICE * qty);
-    payBtn.textContent = 'Pay ' + rupees(PRICE * qty);
+    $('mrp').textContent = rupees(MRP * qty);
+    $('discount').textContent = '−' + rupees((MRP - PRICE) * qty);
+    $('total').textContent = rupees(goods + (cod ? COD_FEE : 0));
+    $('cash').textContent = rupees(goods);
+    form.classList.toggle('is-cod', cod);
+    payBtn.textContent = cod ? 'Pay ₹100 to book' : 'Pay ' + rupees(goods);
   }
   document.querySelectorAll('.qty button').forEach(b => b.onclick = () => {
     qty = Math.min(MAX_QTY, Math.max(1, qty + Number(b.dataset.step)));
     render();
   });
+  form.querySelectorAll('[name=mode]').forEach(r => r.onchange = render);
 
   function show(msg) {
     notice.innerHTML = msg;
@@ -210,7 +239,7 @@
         amount: data.amount,
         currency: 'INR',
         name: 'Kauli Dham',
-        description: 'Kauli Dham Prasad Box × ' + qty,
+        description: (order.mode === 'cod' ? 'COD booking: ' : '') + 'Kauli Dham Prasad Box × ' + qty,
         image: 'https://kaulidham.in/img/logo.webp',
         prefill: { name: order.name, contact: '+91' + order.phone, email: order.email },
         theme: { color: '#c4122f' },
@@ -239,8 +268,11 @@
     const id = esc(r.razorpay_payment_id);
     try {
       await post('/verify.php', r);
+      const msg = isCod()
+        ? 'We received your ₹100 booking amount. Please keep ' + rupees(PRICE * qty) + ' in cash ready when your box arrives. It will be dispatched within 2–3 days.'
+        : 'Thank you. Your payment was received and your box will be dispatched within 2–3 days.';
       document.querySelector('main').innerHTML =
-        '<h1>Order confirmed. Jai Mata Di!</h1><div class="card"><p>Thank you. Your payment was received and your box will be dispatched within 2–3 days.</p>' +
+        '<h1>' + (isCod() ? 'Order booked' : 'Order confirmed') + '. Jai Mata Di!</h1><div class="card"><p>' + msg + '</p>' +
         '<p>Payment ID: <b>' + id + '</b></p><p>Questions? Call <a href="tel:+918360335885">+91 83603 35885</a> or email <a href="mailto:orders@kaulidham.in">orders@kaulidham.in</a>.</p>' +
         '<p><a class="pay" href="index.html" style="text-align:center;text-decoration:none">Back to home</a></p></div>';
       window.scrollTo(0, 0);

@@ -4,6 +4,7 @@ require __DIR__ . '/common.php';
 $in = read_json();
 
 $qty = (int)($in['quantity'] ?? 0);
+$cod = ($in['mode'] ?? '') === 'cod';
 $o = [
     'name'     => clean($in['name'] ?? '', 80),
     'phone'    => clean($in['phone'] ?? '', 10),
@@ -22,7 +23,10 @@ if (!preg_match('/^[6-9]\d{9}$/', $o['phone'])) fail('Invalid mobile number');
 if (!preg_match('/^[1-9]\d{5}$/', $o['pincode'])) fail('Invalid pincode');
 if ($o['email'] !== '' && !filter_var($o['email'], FILTER_VALIDATE_EMAIL)) fail('Invalid email');
 
-$amount = PRICE_PAISE * $qty;
+$total = PRICE_PAISE * $qty + ($cod ? COD_FEE_PAISE : 0);
+$amount = $cod ? COD_FEE_PAISE : $total;
+$o['mode'] = $cod ? 'COD' : 'Prepaid';
+$o['cash_on_delivery'] = (string)(($total - $amount) / 100);
 $order = rzp('POST', '/v1/orders', [
     'amount'   => $amount,
     'currency' => 'INR',
