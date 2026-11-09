@@ -97,6 +97,13 @@
   .list b { font-family: var(--display); font-weight: 600; font-size: 1.12rem; letter-spacing: -0.01em; }
   .list i { font-style: normal; color: var(--ink-soft); text-align: right; }
 
+  /* dham videos */
+  .dham { padding-top: 0; }
+  .dham h2 { font-size: clamp(2.1rem, 3.8vw, 3.1rem); margin-bottom: 10px; }
+  .dham .lede { color: var(--ink-soft); margin-bottom: 28px; }
+  .reel { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 12px; scrollbar-width: thin; }
+  .reel video { flex: none; width: clamp(200px, 22vw, 260px); height: auto; aspect-ratio: 9 / 16; object-fit: cover; border-radius: var(--radius); background: #2a1d18; scroll-snap-align: start; }
+
   /* close */
   .close { background: var(--red); color: #fff; text-align: center; }
   .close img { width: clamp(120px, 14vw, 150px); height: auto; margin: 0 auto 24px; border-radius: 50%; border: 3px solid rgb(255 255 255 / .9); }
@@ -219,6 +226,21 @@
   </div>
 </section>
 
+<section class="dham">
+  <div class="wrap">
+    <h2 class="fade">Seva at the Dham</h2>
+    <p class="lede fade">Havan, darbar and the sangat at Kauli Dham, where every box is prepared.</p>
+    <div class="reel">
+      <video src="video/1.mp4" poster="video/1.jpg" muted loop playsinline preload="none"></video>
+      <video src="video/3.mp4" poster="video/3.jpg" muted loop playsinline preload="none"></video>
+      <video src="video/2.mp4" poster="video/2.jpg" muted loop playsinline preload="none"></video>
+      <video src="video/4.mp4" poster="video/4.jpg" muted loop playsinline preload="none"></video>
+      <video src="video/5.mp4" poster="video/5.jpg" muted loop playsinline preload="none"></video>
+      <video src="video/6.mp4" poster="video/6.jpg" muted loop playsinline preload="none"></video>
+      <video src="video/7.mp4" poster="video/7.jpg" muted loop playsinline preload="none"></video>
+    </div>
+  </div>
+</section>
 
 <section class="close">
   <div class="wrap">
@@ -323,6 +345,11 @@
   const bar = document.getElementById('bar');
   new IntersectionObserver(([e]) => bar.classList.toggle('show', !e.isIntersecting))
     .observe(document.querySelector('.hero .btn'));
+
+  // Dham videos play only while on screen, so phones don't download all seven at once.
+  const vio = new IntersectionObserver(entries => entries.forEach(e =>
+    e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause()), { threshold: 0.25 });
+  document.querySelectorAll('.reel video').forEach(v => vio.observe(v));
 
   const nav = document.getElementById('nav');
   addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 8), { passive: true });
