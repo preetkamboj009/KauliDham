@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kauli Dham">
 <meta property="og:url" content="https://kaulidham.in/prasad">
-<meta property="og:title" content="माता रानी का प्रसाद, अब आपके घर | ₹999">
+<meta property="og:title" content="Mata Rani's prasad, delivered home | ₹999">
 <meta property="og:description" content="Kauli Dham Prasad Box. Free delivery across India. COD available.">
 <meta property="og:image" content="https://kaulidham.in/img/og-wide.jpg">
 <meta property="og:image:width" content="1200">
@@ -42,13 +42,12 @@
   a { color: inherit; text-underline-offset: 3px; }
   :focus-visible { outline: 2px solid var(--red); outline-offset: 3px; border-radius: 6px; }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 var(--gutter); }
-  /* Hindi headings use Mukta (has Devanagari); Outfit is Latin-only. */
-  h1, h2 { font-family: var(--text); font-weight: 800; line-height: 1.15; letter-spacing: -0.01em; text-wrap: balance; }
+  h1, h2 { font-family: var(--display); font-weight: 600; line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; }
   h2 { font-size: clamp(1.9rem, 4.4vw, 2.8rem); margin-bottom: 8px; }
   .kicker { color: var(--ink-soft); margin-bottom: 26px; }
   section { padding: clamp(56px, 9vw, 104px) 0; }
 
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--red); color: #fff; text-decoration: none; font-family: var(--text); font-weight: 700; font-size: 1.2rem; padding: 14px 30px; border-radius: 999px; white-space: nowrap; box-shadow: 0 10px 24px -10px rgb(196 18 47 / .6); transition: background-color .15s var(--ease), transform .15s var(--ease); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--red); color: #fff; text-decoration: none; font-family: var(--display); font-weight: 600; font-size: 1.15rem; padding: 14px 30px; border-radius: 999px; white-space: nowrap; box-shadow: 0 10px 24px -10px rgb(196 18 47 / .6); transition: background-color .15s var(--ease), transform .15s var(--ease); }
   .btn:hover { background: var(--red-dark); }
   .btn:active { transform: scale(.97); }
   .btn svg { width: 20px; height: 20px; }
@@ -98,15 +97,15 @@
   .steps ol { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: s; }
   .steps li { counter-increment: s; background: var(--canvas); border-radius: var(--radius); padding: 22px; }
   .steps li::before { content: counter(s); display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--red); color: #fff; font: 700 1.1rem var(--display); margin-bottom: 12px; }
-  .steps b { display: block; font-size: 1.25rem; font-weight: 700; }
+  .steps b { display: block; font-family: var(--display); font-size: 1.2rem; font-weight: 600; }
   .steps span { color: var(--ink-soft); }
 
   /* pay */
   .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .plan { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 22px; }
   .plan.best { border-color: var(--red); position: relative; }
-  .plan.best::before { content: "₹100 बचाएं"; position: absolute; top: -13px; left: 20px; background: var(--red); color: #fff; font-weight: 700; font-size: .85rem; padding: 2px 12px; border-radius: 999px; }
-  .plan h3 { font-family: var(--text); font-weight: 700; font-size: 1.2rem; }
+  .plan.best::before { content: "Save ₹100"; position: absolute; top: -13px; left: 20px; background: var(--red); color: #fff; font-weight: 700; font-size: .85rem; padding: 2px 12px; border-radius: 999px; }
+  .plan h3 { font-family: var(--display); font-weight: 600; font-size: 1.2rem; }
   .plan .amt { font: 700 2rem/1.2 var(--display); margin: 6px 0; }
   .plan p { color: var(--ink-soft); }
 
@@ -166,10 +165,10 @@
   <div class="wrap">
     <div>
       <p class="eyebrow">Maa Kali Kirpa Chonki · Kauli Dham</p>
-      <h1>माता रानी का प्रसाद, <span>अब आपके घर</span></h1>
+      <h1>Mata Rani's prasad, <span>delivered home.</span></h1>
       <p class="sub">Blessed in havan and packed at Kauli Dham. Everything for your ardas, in one box.</p>
       <div class="price"><s>₹1,799</s> ₹999<em>44% off</em></div>
-      <a class="btn" href="checkout.html">अभी ऑर्डर करें <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      <a class="btn" href="checkout.html">Order Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
       <p class="save">Pay online and <b>save ₹100</b>. Cash on delivery also available.</p>
       <ul class="chips">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>Free delivery, all India</li>
@@ -184,8 +183,8 @@
 <section class="dham">
   <div class="wrap">
     <div>
-      <h2>धाम से सीधे आपके घर</h2>
-      <p class="kicker">Every box is prepared at Kauli Dham, where the havan and darbar take place. Then it comes straight to your door.</p>
+      <h2>From the Dham to your door</h2>
+      <p class="kicker">Every box is prepared at Kauli Dham, where the havan and darbar take place.</p>
     </div>
     <video src="video/3.mp4" poster="video/3.jpg" muted loop playsinline preload="none" aria-label="Havan at Kauli Dham"></video>
   </div>
@@ -195,20 +194,20 @@
   <div class="wrap">
     <div class="poster"><img src="img/poster.webp" alt="Kauli Dham Prasad box with the list of items inside" width="960" height="1200" loading="lazy"></div>
     <div>
-      <h2>डिब्बे में क्या है</h2>
+      <h2>What's inside the box</h2>
       <p class="kicker">Eleven sacred items, packed at the Dham.</p>
       <ul class="items">
-        <li><b>मिश्री का प्रसाद</b><small>Mishri Prasad</small></li>
-        <li><b>पंचमेवा</b><small>Panchmewa</small></li>
-        <li><b>इलायची</b><small>Elaichi</small></li>
-        <li><b>फुल्लियों का प्रसाद</b><small>Phulliyan Prasad</small></li>
-        <li><b>4 रक्षा सूत्र</b><small>4 Raksha Sutra</small></li>
-        <li><b>कौली धाम की सरसों</b><small>Kauli Dham Sarson</small></li>
-        <li><b>लक्ष्मी पोटली</b><small>Laxmi Potli</small></li>
-        <li><b>हाथ से बनी धूप</b><small>Handmade Dhoop</small></li>
-        <li><b>माता की चुनरी</b><small>Mata Ki Chunri</small></li>
-        <li><b>अरदास की सामग्री</b><small>Ardas Samagri</small></li>
-        <li><b>विधि की पर्ची</b><small>Vidhi Parchi</small></li>
+        <li><b>Mishri Prasad</b><small>मिश्री का प्रसाद</small></li>
+        <li><b>Panchmewa</b><small>पंचमेवा</small></li>
+        <li><b>Elaichi</b><small>इलायची</small></li>
+        <li><b>Phulliyan Prasad</b><small>फुल्लियों का प्रसाद</small></li>
+        <li><b>4 Raksha Sutra</b><small>4 रक्षा सूत्र</small></li>
+        <li><b>Kauli Dham Sarson</b><small>कौली धाम की सरसों</small></li>
+        <li><b>Laxmi Potli</b><small>लक्ष्मी पोटली</small></li>
+        <li><b>Handmade Dhoop</b><small>हाथ से बनी धूप</small></li>
+        <li><b>Mata Ki Chunri</b><small>माता की चुनरी</small></li>
+        <li><b>Ardas Samagri</b><small>अरदास की सामग्री</small></li>
+        <li><b>Vidhi Parchi</b><small>विधि की पर्ची</small></li>
       </ul>
     </div>
   </div>
@@ -216,19 +215,19 @@
 
 <section class="steps">
   <div class="wrap">
-    <h2>कैसे मिलेगा</h2>
+    <h2>How it reaches you</h2>
     <p class="kicker">Free delivery anywhere in India.</p>
     <ol>
-      <li><b>ऑर्डर करें</b><span>Pay online, or book with ₹100 for cash on delivery.</span></li>
-      <li><b>2–3 दिन में डिस्पैच</b><span>Packed at the Dham. Tracking details come to your phone.</span></li>
-      <li><b>5–7 दिन में घर</b><span>The box reaches your door, wherever you are in India.</span></li>
+      <li><b>Place your order</b><span>Pay online, or book with ₹100 for cash on delivery.</span></li>
+      <li><b>Dispatched in 2–3 days</b><span>Packed at the Dham. Tracking details come to your phone.</span></li>
+      <li><b>At your door in 5–7 days</b><span>The box reaches your door, wherever you are in India.</span></li>
     </ol>
   </div>
 </section>
 
 <section class="pay">
   <div class="wrap">
-    <h2>पेमेंट कैसे करें</h2>
+    <h2>How to pay</h2>
     <p class="kicker">You choose at checkout.</p>
     <div class="plans">
       <div class="plan best">
@@ -247,7 +246,7 @@
 
 <section class="faq" style="padding-top:0">
   <div class="wrap">
-    <h2 style="margin-bottom:20px">सवाल</h2>
+    <h2 style="margin-bottom:20px">Questions</h2>
     <details>
       <summary>What if my box arrives damaged?</summary>
       <p>WhatsApp us an unboxing video within 48 hours of delivery and we will send a new box.</p>
@@ -266,9 +265,9 @@
 <section class="close">
   <div class="wrap">
     <img src="img/logo.webp" alt="Kauli Dham logo" width="150" height="150" loading="lazy">
-    <h2>जय माता दी</h2>
+    <h2>Jai Mata Di</h2>
     <p>Bring the blessings of Kauli Dham home. ₹999, free delivery.</p>
-    <a class="btn" href="checkout.html">अभी ऑर्डर करें <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    <a class="btn" href="checkout.html">Order Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
     <p class="note">Questions? <a href="https://wa.me/918360335885">WhatsApp</a> or call <a href="tel:+918360335885">83603 35885</a></p>
   </div>
 </section>
@@ -277,7 +276,7 @@
 
 <div class="bar">
   <div class="price">₹999<small>Free delivery · COD</small></div>
-  <a class="btn" href="checkout.html">ऑर्डर करें</a>
+  <a class="btn" href="checkout.html">Order Now</a>
 </div>
 
 <script>
