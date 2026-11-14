@@ -33,7 +33,7 @@ $body = ($cod ? "New COD order\n\nCASH ON DELIVERY: collect Rs $cash in cash\n\n
       . "Address: {$n['address']}\nLandmark: {$n['landmark']}\n"
       . "{$n['city']}, {$n['state']} {$n['pincode']}\n";
 $headers = "From: Kauli Dham <" . ORDERS_EMAIL . ">\r\nContent-Type: text/plain; charset=UTF-8";
-mail(ORDERS_EMAIL, ($cod ? "New COD order" : "New paid order") . " $oid", $body, $headers);
+mail(ORDERS_EMAIL, mb_encode_mimeheader(($cod ? "New COD order" : "New paid order") . " #$ref - {$n['name']}", 'UTF-8'), $body, $headers);
 
 if (filter_var($n['email'] ?? '', FILTER_VALIDATE_EMAIL)) {
     $msg = "Jai Mata Di {$n['name']},\n\n"
