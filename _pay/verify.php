@@ -16,18 +16,19 @@ $cash = (int)($n['cash_on_delivery'] ?? 0);
 $cod = ($n['mode'] ?? '') === 'COD';
 
 // One-tap WhatsApp: opens a chat with the customer, message pre-filled; owner presses Send.
-$wa = "Jai Mata Di 🙏\n\n{$n['name']} ji, aapka Kauli Dham Prasad Box ka order mil gaya hai.\n\n"
-    . "Box: {$n['quantity']}\n"
-    . ($cod ? "Booking amount ₹$total mil gaya. Box aane par ₹$cash cash dena hai.\n"
-            : "Payment ₹$total mil gaya.\n")
-    . "Address: {$n['address']}, {$n['city']} {$n['pincode']}\n\n"
-    . "2-3 din me box bhej denge. Tracking number isi WhatsApp par aayega.\n"
-    . "Koi sawal ho to isi number par message karein.\n\n- Kauli Dham";
+$ref = strtoupper(substr($pid, -6));   // short order number = last 6 of payment ID
+$wa = "🎉 Hi *{$n['name']}*, your order is confirmed 🎉\n\n"
+    . "Jai Mata Di 🙏 We have received your order *#$ref* for *{$n['quantity']} Kauli Dham Prasad Box*.\n\n"
+    . ($cod ? "Booking amount paid: *₹$total*\nPlease keep *₹$cash* in cash ready when the box arrives.\n"
+            : "Amount paid: *₹$total*\n")
+    . "Delivery to: {$n['address']}, {$n['city']} {$n['pincode']}\n\n"
+    . "Your box will be dispatched in 2-3 days. We will share the tracking number here on WhatsApp.\n\n"
+    . "Thank you 🙏\n*Kauli Dham*";
 $waLink = 'https://wa.me/91' . $n['phone'] . '?text=' . rawurlencode($wa);
 
 $body = ($cod ? "New COD order\n\nCASH ON DELIVERY: collect Rs $cash in cash\n\n" : "New paid order (prepaid)\n\n")
       . "WhatsApp the customer (tap, then press Send):\n$waLink\n\n"
-      . "Payment ID: $pid\nOrder ID: $oid\nPaid online: Rs $total\nQuantity: {$n['quantity']}\n\n"
+      . "Order #$ref\nPayment ID: $pid\nOrder ID: $oid\nPaid online: Rs $total\nQuantity: {$n['quantity']}\n\n"
       . "Name: {$n['name']}\nMobile: {$n['phone']}\nEmail: {$n['email']}\n\n"
       . "Address: {$n['address']}\nLandmark: {$n['landmark']}\n"
       . "{$n['city']}, {$n['state']} {$n['pincode']}\n";
