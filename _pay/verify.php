@@ -15,7 +15,18 @@ $total = number_format($order['amount'] / 100, 0, '.', ',');
 $cash = (int)($n['cash_on_delivery'] ?? 0);
 $cod = ($n['mode'] ?? '') === 'COD';
 
+// One-tap WhatsApp: opens a chat with the customer, message pre-filled; owner presses Send.
+$wa = "Jai Mata Di 🙏\n\n{$n['name']} ji, aapka Kauli Dham Prasad Box ka order mil gaya hai.\n\n"
+    . "Box: {$n['quantity']}\n"
+    . ($cod ? "Booking amount ₹$total mil gaya. Box aane par ₹$cash cash dena hai.\n"
+            : "Payment ₹$total mil gaya.\n")
+    . "Address: {$n['address']}, {$n['city']} {$n['pincode']}\n\n"
+    . "2-3 din me box bhej denge. Tracking number isi WhatsApp par aayega.\n"
+    . "Koi sawal ho to isi number par message karein.\n\n- Kauli Dham";
+$waLink = 'https://wa.me/91' . $n['phone'] . '?text=' . rawurlencode($wa);
+
 $body = ($cod ? "New COD order\n\nCASH ON DELIVERY: collect Rs $cash in cash\n\n" : "New paid order (prepaid)\n\n")
+      . "WhatsApp the customer (tap, then press Send):\n$waLink\n\n"
       . "Payment ID: $pid\nOrder ID: $oid\nPaid online: Rs $total\nQuantity: {$n['quantity']}\n\n"
       . "Name: {$n['name']}\nMobile: {$n['phone']}\nEmail: {$n['email']}\n\n"
       . "Address: {$n['address']}\nLandmark: {$n['landmark']}\n"
