@@ -1,5 +1,6 @@
 <?php
-// Verifies the Checkout signature, then emails the order to orders@ (and the customer).
+// Verifies the Checkout signature, then emails the order (see notify_order in common.php).
+// webhook.php sends the same emails if the customer never comes back to the site after paying.
 require __DIR__ . '/common.php';
 $in = read_json();
 
@@ -9,43 +10,5 @@ $sig = (string)($in['razorpay_signature'] ?? '');
 if (!preg_match('/^order_\w+$/', $oid) || !preg_match('/^pay_\w+$/', $pid)) fail('Bad request');
 if (!hash_equals(hash_hmac('sha256', "$oid|$pid", RZP_KEY_SECRET), $sig)) fail('Signature mismatch');
 
-$order = rzp('GET', '/v1/orders/' . $oid);
-$n = $order['notes'] ?? [];
-$total = number_format($order['amount'] / 100, 0, '.', ',');
-$cash = (int)($n['cash_on_delivery'] ?? 0);
-$cod = ($n['mode'] ?? '') === 'COD';
-
-// One-tap WhatsApp: opens a chat with the customer, message pre-filled; owner presses Send.
-$ref = strtoupper(substr($pid, -6));   // short order number = last 6 of payment ID
-$addr = implode(', ', array_filter([$n['address'], $n['landmark'] ?? '', $n['city'], $n['state'] ?? ''])) . " - {$n['pincode']}";
-$wa = "*JAI MATA DI* 🙏\n\n"
-    . "Aap Ka Order Mil Gaya Hai ✅\n\n"
-    . "*Order:* #$ref ({$n['quantity']} Kauli Dham Prasad Box)\n"
-    . ($cod ? "*Payment:* ₹$total booking paid, ₹$cash cash on delivery\n"
-            : "*Payment:* ₹$total paid\n")
-    . "*Name:* {$n['name']}\n"
-    . "*Mobile:* {$n['phone']}\n"
-    . "*Address:* $addr";
-$waLink = 'https://wa.me/91' . $n['phone'] . '?text=' . rawurlencode($wa);
-
-$body = ($cod ? "New COD order\n\nCASH ON DELIVERY: collect Rs $cash in cash\n\n" : "New paid order (prepaid)\n\n")
-      . "WhatsApp the customer (tap, then press Send):\n$waLink\n\n"
-      . "Order #$ref\nPayment ID: $pid\nOrder ID: $oid\nPaid online: Rs $total\nQuantity: {$n['quantity']}\n\n"
-      . "Name: {$n['name']}\nMobile: {$n['phone']}\nEmail: {$n['email']}\n\n"
-      . "Address: {$n['address']}\nLandmark: {$n['landmark']}\n"
-      . "{$n['city']}, {$n['state']} {$n['pincode']}\n";
-$headers = "From: Kauli Dham <" . ORDERS_EMAIL . ">\r\nContent-Type: text/plain; charset=UTF-8";
-mail(ORDERS_EMAIL, mb_encode_mimeheader(($cod ? "New COD order" : "New paid order") . " #$ref - {$n['name']}", 'UTF-8'), $body, $headers);
-
-if (filter_var($n['email'] ?? '', FILTER_VALIDATE_EMAIL)) {
-    $msg = "Jai Mata Di {$n['name']},\n\n"
-         . ($cod
-             ? "Thank you. We received your booking amount of Rs $total for {$n['quantity']} Kauli Dham Prasad Box. Please keep Rs $cash in cash ready when the box arrives.\n"
-             : "Thank you. We received your payment of Rs $total for {$n['quantity']} Kauli Dham Prasad Box.\n")
-         . "Payment ID: $pid\n\n"
-         . "Your box will be dispatched within 2-3 days. For help, reply to this email or call +91 83603 35885.\n\n"
-         . "Maa Kaali Vastu Kendra\nkaulidham.in\n";
-    mail($n['email'], 'Your Kauli Dham order is confirmed', $msg, $headers . "\r\nReply-To: " . ORDERS_EMAIL);
-}
-
+notify_order($oid, $pid);
 out(['ok' => true, 'payment_id' => $pid]);
