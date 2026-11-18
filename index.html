@@ -83,7 +83,15 @@
   .price small { display: block; font-family: var(--text); font-weight: 500; font-size: .9rem; letter-spacing: 0; color: var(--ink-soft); margin-top: 6px; }
   .hero-photo { position: relative; }
   .hero { overflow-x: clip; }
-  .hero-photo img { width: 100%; height: auto; transform: scale(1.18); }
+  .slides { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 20px; background: #fff; }
+  .slides::-webkit-scrollbar { display: none; }
+  .slides:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+  .slides img { flex: none; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; scroll-snap-align: start; scroll-snap-stop: always; }
+  .dots { display: flex; justify-content: center; gap: 2px; margin-top: 8px; }
+  .dots button { width: 28px; height: 28px; padding: 0; border: 0; background: none; cursor: pointer; display: grid; place-items: center; }
+  .dots button::after { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--ink-soft); opacity: .35; transition: opacity .2s, background .2s; }
+  .dots button[aria-current="true"]::after { background: var(--red); opacity: 1; }
+  .dots button:focus-visible { outline: 2px solid var(--red); outline-offset: -2px; border-radius: 50%; }
 
   /* promise strip */
   .promise { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
@@ -172,7 +180,7 @@
     .hero { padding-top: 12px; }
     .hero .wrap { grid-template-columns: 1fr; gap: 28px; }
     .hero-photo { order: -1; }
-    .hero-photo img { aspect-ratio: 5 / 4; object-fit: cover; transform: none; margin: -8px 0 -8px; }
+    .slides img { aspect-ratio: 5 / 4; }
     .hero h1 { font-size: 2.5rem; }
     .hero .sub { font-size: 1.08rem; margin: 14px 0 24px; }
     .promise ul { flex-direction: column; gap: 18px; padding: 28px 0; }
@@ -211,7 +219,12 @@
       </div>
     </div>
     <div class="hero-photo">
-      <img src="img/box-front.webp" alt="Kauli Dham Prasad Box" width="1200" height="1200" fetchpriority="high">
+      <div class="slides" id="slides" role="group" aria-label="Photos of the Prasad Box" tabindex="0">
+        <img src="img/box-white.webp" alt="Kauli Dham Prasad Box" width="1000" height="1000" fetchpriority="high">
+        <img src="img/boxes-white.webp" alt="Five Prasad Boxes laid out together" width="1000" height="1000" loading="lazy">
+        <img src="img/boxes-stack-white.webp" alt="Stack of Prasad Boxes" width="1000" height="1000" loading="lazy">
+      </div>
+      <div class="dots" id="dots"></div>
     </div>
   </div>
 </header>
@@ -388,6 +401,27 @@
   };
   openPolicy();
   addEventListener('hashchange', openPolicy);
+
+  // Hero photos: swipe natively (CSS scroll-snap), dots to jump, auto-advance until the visitor takes over.
+  const slides = document.getElementById('slides');
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const current = () => Math.round(slides.scrollLeft / slides.clientWidth);
+  const go = i => slides.scrollTo({ left: i * slides.clientWidth, behavior: calm ? 'auto' : 'smooth' });
+  const dots = [...slides.children].map((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', `Show photo ${i + 1}`);
+    b.onclick = () => { stop(); go(i); };
+    return document.getElementById('dots').appendChild(b);
+  });
+  const mark = () => dots.forEach((b, i) => b.setAttribute('aria-current', i === current()));
+  slides.addEventListener('scroll', mark, { passive: true });
+  mark();
+  let timer = calm ? 0 : setInterval(() => {
+    if (!document.hidden && slides.getBoundingClientRect().bottom > 0) go((current() + 1) % dots.length);
+  }, 4000);
+  const stop = () => clearInterval(timer);
+  ['pointerdown', 'wheel', 'keydown'].forEach(e => slides.addEventListener(e, stop, { passive: true }));
 
   const io = new IntersectionObserver(entries => entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
